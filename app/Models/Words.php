@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Words extends Model
 {
+
     use HasFactory;
+    protected $fillable = array(
+        'name',
+        'artist',
+        'price'
+    );
 }
