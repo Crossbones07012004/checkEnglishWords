@@ -5,16 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Words;
 use Illuminate\Http\Request;
 
-
-class Person
-{
-    public $name, $age;
-
-    function hello()
-    {
-        echo "Hello!<br>";
-    }
-}
 class WordsController extends Controller
 {
     public function view()
@@ -27,21 +17,25 @@ class WordsController extends Controller
         $word->eng = $request["eng"];
         $word->rus = $request["rus"];
         $word->save();
-        return "post";
+        return $word;
 
     }
     public function putWord(Request $request, $id)
     {
         $word =Words::find($id);
-        $word->eng = $request["eng"];
-        $word->rus = $request["rus"];
+        if($request["eng"]!=""){
+            $word->eng = $request["eng"];
+        }
+        if($request["rus"]!=""){
+            $word->eng = $request["rus"];
+        }
         $word->save();
-        return "put";
+        return $word;
     }
     public function deleteWord($id)
     {
         $word =Words::find($id);
         $word->delete();
-        return "delete";
+        return $word;
     }
 }

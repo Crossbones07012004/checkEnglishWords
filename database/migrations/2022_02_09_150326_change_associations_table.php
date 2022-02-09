@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssociationsTable extends Migration
+class ChangeAssociationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateAssociationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('associations', function (Blueprint $table) {
-            $table->id();
-//            $table->string('wordId');
-            $table->string('text');
-            $table->string('imgPath');
+        Schema::table('associations', function (Blueprint $table) {
+            $table->string('wordId');
         });
     }
 
@@ -28,6 +25,6 @@ class CreateAssociationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('associations');
+        //
     }
 }
