@@ -27,7 +27,7 @@ class WordsController extends Controller
             $word->eng = $request["eng"];
         }
         if($request["rus"]!=""){
-            $word->eng = $request["rus"];
+            $word->rus = $request["rus"];
         }
         $word->save();
         return $word;

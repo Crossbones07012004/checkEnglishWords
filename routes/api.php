@@ -11,5 +11,5 @@ Route::put('/words/{id}', [WordsController::class, 'putWord']);
 Route::delete('/words/{id}', [WordsController::class, 'deleteWord']);
 Route::get('/associations', [AssociationsController::class, 'view']);
 Route::post('/associations', [AssociationsController::class, 'addAssociation']);
-//Route::put('/associations/{id}', [AssociationsController::class, 'putWord']);
+Route::put('/associations/{id}', [AssociationsController::class, 'putWord']);
 //Route::delete('/associations/{id}', [AssociationsController::class, 'deleteWord']);

@@ -16,6 +16,7 @@ class AssociationsController extends Controller
     {
         $association = new Associations;
         $association->imgPath = Storage::disk('local')->put('association/img', $request["file"]);
+
         $association->text= $request["text"];
         $association->wordId= $request["wordId"];
         $association->save();
@@ -24,17 +25,23 @@ class AssociationsController extends Controller
     }
     public function putAssociation(Request $request, $id)
     {
-        $word =Words::find($id);
-        $association->imgPath = Storage::disk('local')->put('association/img', $request["file"]);
-        $association->text= $request["text"];
-        $association->wordId= $request["wordId"];
-        $word->save();
-        return "put";
+        $association =Associations::find($id);
+        if($request["file"]!=null){
+            $association->imgPath = Storage::disk('local')->put('association/img', $request["file"]);
+        }
+        if($request["text"]!=""){
+            $association->text = $request["text"];
+        }
+        if($request["wordId"]!=""){
+            $association->wordId = $request["wordId"];
+        }
+        $association->save();
+        return $association;
     }
     public function deleteAssociation($id)
     {
-        $word =Words::find($id);
-        $word->delete();
-        return "delete";
+        $association =Associations::find($id);
+        $association->delete();
+        return $association;
     }
 }
