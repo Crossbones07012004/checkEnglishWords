@@ -5,6 +5,7 @@ use App\Http\Controllers\QuestSavesController;
 use App\Http\Controllers\QuestsController;
 use App\Http\Controllers\WordChecksController;
 use App\Http\Controllers\WordsController;
+use App\Http\creator\UniversalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,10 @@ Route::post('/quests', [QuestsController::class, 'addQuest']);
 Route::put('/quests/{id}', [QuestsController::class, 'putQuest']);
 Route::delete('/quests/{id}', [QuestsController::class, 'deleteQuest']);
 
+
 Route::get('/questSaves', [QuestSavesController::class, 'view']);
 Route::post('/questSaves', [QuestSavesController::class, 'addQuestSave']);
 Route::put('/questSaves/{id}', [QuestSavesController::class, 'putQuestSave']);
 Route::delete('/questSaves/{id}', [QuestSavesController::class, 'deleteQuestSave']);
+
 

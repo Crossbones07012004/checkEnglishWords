@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AssociationsController extends Controller
 {
-    public function view()
+        public function view()
     {
         return Associations::all();
     }
