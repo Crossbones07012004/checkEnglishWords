@@ -8,6 +8,7 @@ use App\Http\Controllers\WordsController;
 use App\Http\creator\UniversalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Models\Words;
 
 Route::get('/words', [WordsController::class, 'view']);
 Route::post('/words', [WordsController::class, 'addWord']);
@@ -36,5 +37,9 @@ Route::get('/questSaves', [QuestSavesController::class, 'view']);
 Route::post('/questSaves', [QuestSavesController::class, 'addQuestSave']);
 Route::put('/questSaves/{id}', [QuestSavesController::class, 'putQuestSave']);
 Route::delete('/questSaves/{id}', [QuestSavesController::class, 'deleteQuestSave']);
+
+
+$hz=new UniversalController(new Words);
+Route::post('/11111', $hz->add());
 
 

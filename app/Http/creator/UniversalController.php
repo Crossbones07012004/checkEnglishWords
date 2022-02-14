@@ -3,28 +3,44 @@
 namespace App\Http\creator;
 
 use App\Http\Controllers\Controller;
-use App\Models\Word_checks;
+
+use App\Models\Words;
 use Illuminate\Http\Request;
 
 class UniversalController
 {
-
-    public $controller;
-    public function adder(Request $request)
-    {
-        call_user_func()
-        dd(this->$controller);
-        $class = new ReflectionClass(this->$controller->getName());
-
-        $wordCheck = new Word_checks;
-        $wordCheck->password=$request["wordId"];
-        $wordCheck->elementsJson=$request["marksNumber"];
-
-        $wordCheck->save();
-        return $wordCheck;
+    public $model;
+    function __construct($model) {
+        $this->model=$model;
     }
-    function puter()
+    function view()
     {
-
+        return $this->model::all();
     }
+    public function add()
+    {
+        //Получить список всех классов по конкретному namespace
+        dd(get_declared_classes());
+        $word = new (get_class($this->model));
+//        foreach (array_keys($word->getOriginal()) as &$value) {
+//            if(isset($request[$value])){
+//                dump($word[$value]);
+//            }
+//
+//        }
+//        dump($word->getAttributes());
+//        die();
+//        $word->eng = $request["eng"];
+//        $word->rus = $request["rus"];
+//        $word->save();
+        return $word;
+    }
+//    function put()
+//    {
+//
+//    }
+//    function delete()
+//    {
+//
+//    }
 }

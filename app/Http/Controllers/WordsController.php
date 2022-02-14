@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Words;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class WordsController extends Controller
 {
@@ -23,6 +24,7 @@ class WordsController extends Controller
     public function putWord(Request $request, $id)
     {
         $word =Words::find($id);
+//
         if($request["eng"]!=""){
             $word->eng = $request["eng"];
         }

@@ -8,6 +8,7 @@ class WordChecksController extends Controller
 {
     public function view()
     {
+
         return Word_checks::all();
     }
     public function addWordCheck(Request $request)

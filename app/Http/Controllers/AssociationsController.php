@@ -16,7 +16,6 @@ class AssociationsController extends Controller
     {
         $association = new Associations;
         $association->imgPath = Storage::disk('local')->put('association/img', $request["file"]);
-
         $association->text= $request["text"];
         $association->wordId= $request["wordId"];
         $association->save();
