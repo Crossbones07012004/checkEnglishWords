@@ -23,8 +23,8 @@ Route::delete('/wordChecks/{id}', [WordChecksController::class, 'deleteWordCheck
 
 Route::get('/associations', [AssociationsController::class, 'view']);
 Route::post('/associations', [AssociationsController::class, 'addAssociation']);
-Route::put('/associations/{id}', [AssociationsController::class, 'putWord']);
-Route::delete('/associations/{id}', [AssociationsController::class, 'deleteWord']);
+Route::put('/associations/{id}', [AssociationsController::class, 'putAssociation']);
+Route::delete('/associations/{id}', [AssociationsController::class, 'deleteAssociation']);
 
 
 Route::get('/quests', [QuestsController::class, 'view']);
@@ -40,6 +40,6 @@ Route::delete('/questSaves/{id}', [QuestSavesController::class, 'deleteQuestSave
 
 
 $hz=new UniversalController(new Words);
-Route::post('/11111', $hz->add());
+Route::post('/Words', [UniversalController::class, 'add']);
 
 

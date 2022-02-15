@@ -37,6 +37,7 @@ class WordChecksController extends Controller
     {
         $wordCheck =Quests::find($id);
         $wordCheck->delete();
+
         return $wordCheck;
     }
 }
