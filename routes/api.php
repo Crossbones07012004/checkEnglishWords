@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Models\Words;
 
 Route::get('/words', [WordsController::class, 'view']);
-Route::post('/words', [WordsController::class, 'addWord']);
+Route::post('/words', [WordsController::class, 'add']);
 Route::put('/words/{id}', [WordsController::class, 'putWord']);
 Route::delete('/words/{id}', [WordsController::class, 'deleteWord']);
 
@@ -40,6 +40,6 @@ Route::delete('/questSaves/{id}', [QuestSavesController::class, 'deleteQuestSave
 
 
 $hz=new UniversalController(new Words);
-Route::post('/Words', [UniversalController::class, 'add']);
+Route::post('/111', [UniversalController::class, 'add1']);
 
 

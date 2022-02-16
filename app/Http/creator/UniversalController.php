@@ -3,39 +3,37 @@
 namespace App\Http\creator;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\User;
 use App\Models\Words;
+use Doctrine\Inflector\Rules\Word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RecursiveRegexIterator;
 use ReflectionClass;
 use RegexIterator;
-use Illuminate\Support\Facades\Route;
 
 
-class UniversalController
+class UniversalController extends Controller
 {
-    Associations
     public $model;
-//    function __construct($model) {
-//        $this->model=$model;
-//    }
+
     function view()
     {
         return $this->model::all();
     }
-    public function add()
+//
+    public function add1()
     {
+          echo "jofs";
 //        $hz = new User();
 //        $ThisEndModel=substr(get_class($hz),strripos(get_class($hz),"\\")+1);
 
 //        Route::post('/'.$ThisEndModel, [UniversalController::class, 'add']);
 //        dd($ThisEndModel);
 
-        $ThisEndRoute=substr(Route::current()->uri,strripos(Route::current()->uri,"/")+1);
-        dump($ThisEndRoute);
+        $thisEndRoute=substr(Route::current()->uri,strripos(Route::current()->uri,"/")+1);
+        dump($thisEndRoute);
 
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("/CheckEnglishWords\\app\\Models"));
         $regex    = new RegexIterator($iterator, '/^.+\.php$/i', RecursiveRegexIterator::GET_MATCH);
@@ -43,10 +41,10 @@ class UniversalController
         foreach ($regex as $file => $value) {
 
             $temp=substr($file,strripos($file,"\\")+1);
-            $ThisEndModel=substr($temp,0,strlen($temp)-4);
-            $reflectionClass = new ReflectionClass($ThisEndModel);
-
-            if($ThisEndRoute==$ThisEndModel){
+            $thisEndModel=substr($temp,0,strlen($temp)-4);
+            dd($thisEndModel);
+            $reflectionClass = new ReflectionClass($thisEndModel);
+            if($thisEndRoute==$thisEndModel){
                 dump($file);
             }
         }
@@ -75,4 +73,30 @@ class UniversalController
 //    {
 //
 //    }
+    public function add(Request $request)
+    {
+        $word = $this->model::create($this->model::validatedData($request));
+
+        return $word;
+    }
+
+    public function putWord(Request $request, $id)
+    {
+        $word =$this->model::find($id);
+
+        $word->fill($this->model::validatedData($request));
+
+        $word->save();
+
+        return $word;
+    }
+
+    public function deleteWord($id)
+    {
+        $word =$this->model::find($id);
+
+        $word->delete();
+
+        return $word;
+    }
 }
