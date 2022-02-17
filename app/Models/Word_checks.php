@@ -9,7 +9,7 @@ class Word_checks extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['eng', 'rus'];
+    protected $fillable = ['wordId', 'marksNumber'];
 
     public static function validatedData($request){
         $validated = $request->validate([

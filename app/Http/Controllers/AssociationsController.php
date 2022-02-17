@@ -3,30 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Associations;
+use App\Models\Word_checks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AssociationsController extends Controller
 {
-        public function view()
-    {
-        return Associations::all();
-    }
-    public function addAssociation(Request $request)
+    public $model = Associations::class;
+    public function add(Request $request)
     {
         $association = new Associations;
-        $association->imgPath = Storage::disk('local')->put('', $request["file"]);
+        $association->imgPath = Storage::disk('local')->put('', $request["imgPath"]);
         $association->text= $request["text"];
         $association->wordId= $request["wordId"];
         $association->save();
         return $association;
 
     }
-    public function putAssociation(Request $request, $id)
+    public function put(Request $request, $id)
     {
         $association =Associations::find($id);
         if($request["file"]!=null){
-            $association->imgPath = Storage::disk('local')->put('', $request["file"]);
+            $association->imgPath = Storage::disk('local')->put('', $request["imgPath"]);
         }
         if($request["text"]!=""){
             $association->text = $request["text"];
@@ -37,7 +35,7 @@ class AssociationsController extends Controller
         $association->save();
         return $association;
     }
-    public function deleteAssociation($id)
+    public function delete($id)
     {
         $association =Associations::find($id);
         Storage::delete($association->imgPath);

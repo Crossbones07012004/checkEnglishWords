@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssociationsTable extends Migration
+class AddTimestampsToWordChecksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateAssociationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('associations', function (Blueprint $table) {
-            $table->id();
-            $table->string('text');
-            $table->string('imgPath');
+        Schema::table('word_checks', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateAssociationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('associations');
+        Schema::table('word_checks', function (Blueprint $table) {
+            //
+        });
     }
 }

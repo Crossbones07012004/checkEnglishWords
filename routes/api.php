@@ -5,41 +5,37 @@ use App\Http\Controllers\QuestSavesController;
 use App\Http\Controllers\QuestsController;
 use App\Http\Controllers\WordChecksController;
 use App\Http\Controllers\WordsController;
-use App\Http\creator\UniversalController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Models\Words;
+
 
 Route::get('/words', [WordsController::class, 'view']);
 Route::post('/words', [WordsController::class, 'add']);
-Route::put('/words/{id}', [WordsController::class, 'putWord']);
-Route::delete('/words/{id}', [WordsController::class, 'deleteWord']);
+Route::put('/words/{id}', [WordsController::class, 'put']);
+Route::delete('/words/{id}', [WordsController::class, 'delete']);
 
 Route::get('/wordChecks', [WordChecksController::class, 'view']);
-Route::post('/wordChecks', [WordChecksController::class, 'addWordCheck']);
-Route::put('/wordChecks/{id}', [WordChecksController::class, 'putWordCheck']);
-Route::delete('/wordChecks/{id}', [WordChecksController::class, 'deleteWordCheck']);
-
+Route::post('/wordChecks', [WordChecksController::class, 'add']);
+Route::put('/wordChecks/{id}', [WordChecksController::class, 'put']);
+Route::delete('/wordChecks/{id}', [WordChecksController::class, 'delete']);
 
 Route::get('/associations', [AssociationsController::class, 'view']);
-Route::post('/associations', [AssociationsController::class, 'addAssociation']);
-Route::put('/associations/{id}', [AssociationsController::class, 'putAssociation']);
-Route::delete('/associations/{id}', [AssociationsController::class, 'deleteAssociation']);
-
+Route::post('/associations', [AssociationsController::class, 'add']);
+Route::put('/associations/{id}', [AssociationsController::class, 'put']);
+Route::delete('/associations/{id}', [AssociationsController::class, 'delete']);
 
 Route::get('/quests', [QuestsController::class, 'view']);
-Route::post('/quests', [QuestsController::class, 'addQuest']);
-Route::put('/quests/{id}', [QuestsController::class, 'putQuest']);
-Route::delete('/quests/{id}', [QuestsController::class, 'deleteQuest']);
-
+Route::post('/quests', [QuestsController::class, 'add']);
+Route::put('/quests/{id}', [QuestsController::class, 'put']);
+Route::delete('/quests/{id}', [QuestsController::class, 'delete']);
 
 Route::get('/questSaves', [QuestSavesController::class, 'view']);
-Route::post('/questSaves', [QuestSavesController::class, 'addQuestSave']);
-Route::put('/questSaves/{id}', [QuestSavesController::class, 'putQuestSave']);
-Route::delete('/questSaves/{id}', [QuestSavesController::class, 'deleteQuestSave']);
+Route::post('/questSaves', [QuestSavesController::class, 'add']);
+Route::put('/questSaves/{id}', [QuestSavesController::class, 'put']);
+Route::delete('/questSaves/{id}', [QuestSavesController::class, 'delete']);
 
 
-$hz=new UniversalController(new Words);
-Route::post('/111', [UniversalController::class, 'add1']);
+//
+//$hz=new UniversalController(new Words);
+//Route::post('/Words', [UniversalController::class, 'add1']);
 
 
