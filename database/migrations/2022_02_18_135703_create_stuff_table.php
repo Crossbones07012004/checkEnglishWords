@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestSavesTable extends Migration
+class CreateStuffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateQuestSavesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quest_saves', function (Blueprint $table) {
+        Schema::create('stuff', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateQuestSavesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quest_saves');
+        Schema::dropIfExists('stuff');
     }
 }

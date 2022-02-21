@@ -19,12 +19,7 @@ class CreateWordChecksTable extends Migration
             $table->integer("marksNumber");
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('word_checks');
