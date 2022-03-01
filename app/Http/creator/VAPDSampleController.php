@@ -17,11 +17,13 @@ class VAPDSampleController extends Controller
 {
     public $model;
 
-    function view()
+    function get()
     {
-        return $this->model::all();
+        $collection = $this->model::all();
+        $sorted = $collection->sort();
+        return $sorted;
     }
-    public function add(Request $request)
+    public function post(Request $request)
     {
         $object = $this->model::create($this->model::validatedData($request));
 
