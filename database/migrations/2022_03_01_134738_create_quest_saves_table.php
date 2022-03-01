@@ -15,7 +15,9 @@ class CreateQuestSavesTable extends Migration
     {
         Schema::create('quest_saves', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer("user_id");
+            $table->integer("quest_id");
+            $table->json("saves");
             $table->timestamps();
         });
     }

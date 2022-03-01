@@ -12,7 +12,7 @@ class Quests extends Model
 
     public static function validatedData($request){
         $validated = $request->validate([
-            'savesJson' => 'sometimes',
+            'password' => 'sometimes',
             'elementsJson' => 'sometimes',
             'propertiesJson' => 'sometimes',
 

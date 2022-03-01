@@ -8,7 +8,7 @@ use App\Http\Controllers\WordChecksController;
 use App\Http\Controllers\WordsController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\creator\VAPDSampleCreator;
-
+use \App\Http\Controllers\UserStuffsController;
 
 VAPDSampleCreator::create("words", WordsController::class);
 
@@ -22,7 +22,7 @@ VAPDSampleCreator::create("questSaves", QuestSavesController::class);
 
 VAPDSampleCreator::create("stuffs", StuffController::class);
 
+VAPDSampleCreator::create("userStuffs", UserStuffsController::class);
+
 VAPDSampleCreator::create("users", StuffController::class);
-
-
 

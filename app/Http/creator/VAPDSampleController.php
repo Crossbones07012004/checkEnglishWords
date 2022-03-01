@@ -17,11 +17,15 @@ class VAPDSampleController extends Controller
 {
     public $model;
 
-    function view()
+    public function get()
     {
         return $this->model::all();
     }
-    public function add(Request $request)
+    public function getById($id)
+    {
+        return $this->model::find($id);
+    }
+    public function post(Request $request)
     {
         $object = $this->model::create($this->model::validatedData($request));
 
@@ -45,4 +49,5 @@ class VAPDSampleController extends Controller
 
         return $object;
     }
+
 }

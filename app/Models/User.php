@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function validatedData($request){
+        $validated = $request->validate([
+            'name' => 'sometimes',
+        ]);
+
+        return $validated;
+    }
 }

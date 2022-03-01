@@ -8,8 +8,9 @@ class VAPDSampleCreator
 {
     public static function create($url, $controllerClass)
     {
-        Route::get('/' . $url, [$controllerClass, 'view']);
-        Route::post('/' . $url, [$controllerClass, 'add']);
+        Route::get('/' . $url, [$controllerClass, 'get']);
+        Route::get('/' . $url . '/{id}', [$controllerClass, 'getById']);
+        Route::post('/' . $url, [$controllerClass, 'post']);
         Route::put('/' . $url . '/{id}', [$controllerClass, 'put']);
         Route::delete('/' . $url . '/{id}', [$controllerClass, 'delete']);
     }

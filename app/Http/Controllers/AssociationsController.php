@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\creator\VAPDSampleController;
 use App\Models\Associations;
 use App\Models\Word_checks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class AssociationsController extends Controller
+class AssociationsController extends VAPDSampleController
 {
     public $model = Associations::class;
-    public function add(Request $request)
+    public function post(Request $request)
     {
         $association = new Associations;
-        $association->imgPath = Storage::disk('local')->put('', $request["imgPath"]);
+        $association->imgPath = Storage::disk('local')->put('association/img', $request["imgPath"]);
         $association->text= $request["text"];
         $association->wordId= $request["wordId"];
         $association->save();
