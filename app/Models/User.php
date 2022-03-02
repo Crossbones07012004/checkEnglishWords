@@ -45,6 +45,8 @@ class User extends Authenticatable
     public static function validatedData($request){
         $validated = $request->validate([
             'name' => 'sometimes',
+            'email' => 'sometimes',
+            'password' => 'sometimes',
         ]);
 
         return $validated;

@@ -9,6 +9,7 @@ use App\Http\Controllers\WordsController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\creator\VAPDSampleCreator;
 use \App\Http\Controllers\UserStuffsController;
+use \App\Http\Controllers\UserController;
 
 VAPDSampleCreator::create("words", WordsController::class);
 
@@ -24,5 +25,5 @@ VAPDSampleCreator::create("stuffs", StuffController::class);
 
 VAPDSampleCreator::create("userStuffs", UserStuffsController::class);
 
-VAPDSampleCreator::create("users", StuffController::class);
+VAPDSampleCreator::create("users", UserController::class);
 

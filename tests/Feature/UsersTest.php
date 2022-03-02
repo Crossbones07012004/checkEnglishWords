@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Stuff;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -23,23 +24,25 @@ class UsersTest extends TestCase
     }
     public function test_Post201()
     {
-        $response = $this->post('/api/users', ['name' =>"{}"]);
+        $id=User::all()->last()->id;
+
+        $response = $this->post('/api/users', ["name"=>"dddddd111", "email"=>"ssswwwws".$id, "password"=>"password"]);
 
         $response->assertStatus(201);
     }
 
     public function test_Put200()
     {
-        $id=Stuff::all()->first()->id;
-
-        $response = $this->put('/api/users/'.$id,  ['name' =>"{}"]);
+        $id=User::all()->last()->id;
+//        dd($id);
+        $response = $this->put('/api/users/'.$id,  ["name"=>"dddddd111", "email"=>"ssswwws".$id, "password"=>"password"]);
 
         $response->assertStatus(200);
     }
 
     public function test_Delete200()
     {
-        $id=Stuff::all()->first()->id;
+        $id=User::all()->last()->id;
 
         $response = $this->delete('/api/users/'.$id);
 

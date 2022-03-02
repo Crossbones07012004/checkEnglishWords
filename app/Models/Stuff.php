@@ -12,7 +12,7 @@ class Stuff extends Model
 
     public static function validatedData($request){
         $validated = $request->validate([
-            'name' => 'sometimes',
+                'name' => 'sometimes',
         ]);
 
         return $validated;

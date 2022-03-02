@@ -25,7 +25,7 @@ class AssociationsTest extends TestCase
     }
     public function test_Post201()
     {
-        $file = new UploadedFile("C:\Users\itstart.ITSTEP\Pictures\IMG_0729.jpg", "IMG_0729.jpg", 'image/jpg', null, true);
+        $file = new UploadedFile("C:\Users\itstep.ITSTEP\Pictures\d.jpg", "d.jpg", 'image/jpg', null, true);
 
         $response = $this->post('/api/associations', ['imgPath' =>$file ,"text"=>"ddddddddd","wordId"=>"1"]);
 
@@ -35,7 +35,7 @@ class AssociationsTest extends TestCase
     public function test_Put200()
     {
         $id=Associations::all()->first()->id;
-        $file = new UploadedFile("C:\Users\itstart.ITSTEP\Pictures\IMG_0729.jpg", "IMG_0729.jpg", 'image/jpg', null, true);
+        $file = new UploadedFile("C:\Users\itstep.ITSTEP\Pictures\d.jpg", "d.jpg", 'image/jpg', null, true);
 
         $response = $this->put('/api/associations/'.$id, ['imgPath' =>$file ,"text"=>"ddddddddd","wordId"=>"1"]);
 
