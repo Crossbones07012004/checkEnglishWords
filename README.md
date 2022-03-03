@@ -58,7 +58,7 @@ php artisan serve
     {
     "eng":"cat",
     "rus":"кот"
-}
+    }
   ```
 
 ссылка на docker с запросами

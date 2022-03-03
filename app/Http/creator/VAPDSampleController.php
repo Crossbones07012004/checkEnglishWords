@@ -2,6 +2,7 @@
 
 namespace App\Http\creator;
 
+use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Words;
 use Illuminate\Http\Request;
@@ -27,7 +28,14 @@ class VAPDSampleController extends Controller
     }
     public function post(Request $request)
     {
-        $object = $this->model::create($this->model::validatedData($request));
+        try{
+            $object = $this->model::create($this->model::validatedData($request));
+        }
+        catch (ModelNotFoundException  $e){
+            throw new UserNotFoundException();
+        }
+
+
 
         return $object;
     }
